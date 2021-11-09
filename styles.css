@@ -46,6 +46,11 @@
   bottom: 90px;
 }
 
+.weatherExtras {
+  list-style: none;
+  font-size: 15px;
+}
+
 .todayForcast {
   position: relative;
   bottom: 80px;
@@ -64,4 +69,6 @@
 
 .signiture {
   font-size: 15px;
+  display: block;
+  margin: 0 auto;
 }
