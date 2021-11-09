@@ -44,49 +44,53 @@
       </div>
 
       <!-- Today's temp and current location-->
-      <div class="forcast todayForcastDay">
-        <h3 class="searchedCity">Dallas</h3>
-        <p class="dateTime">Saturday, 1:49pm</p>
-        <ul class="weatherExtras">
-          <li class="percipitation">Percipitation: 1%</li>
-          <li class="humidity">Humidity: 10%</li>
-          <li class="wind">Wind: 7mph</li>
-        </ul>
+      <div class="row">
+        <div class="forcast todayForcastDay">
+          <h3 class="searchedCity">Dallas</h3>
+          <p class="dateTime">Saturday, 1:49pm</p>
+        </div>
       </div>
 
       <div class="row forcast todayForcast">
-        <div class="col-7"></div>
+        <div class="col-6">
+          <ul class="weatherExtras">
+            <li class="percipitation">Percipitation: 1%</li>
+            <li class="humidity">Humidity: 10%</li>
+            <li class="wind">Wind: 7mph</li>
+          </ul>
+        </div>
+        <div class="col-2"></div>
         <p class="col-2" id="todays-temp">
           <span class="todaysTemp">75°</span><a href="#" id="temp-scale">F</a>
+          <small class="weatherType">Sunny</small>
         </p>
-        <small class="col-1 weatherType">Sunny</small>
       </div>
 
       <!-- Forcast for next 5 days-->
       <div class="row forcast weekForcast">
         <div class="col">
           Sunday <br />
-          ☀ 77°
+          <img class="futureImage" src="src/images/clear-day.svg" /> 77°
         </div>
 
         <div class="col">
           Monday <br />
-          ☀ 80°
+          <img class="futureImage" src="src/images/clear-day.svg" /> 80°
         </div>
 
         <div class="col">
           Tuesday <br />
-          🌤 70°
+          <img class="futureImage" src="src/images/clear-day.svg" /> 70°
         </div>
 
         <div class="col">
           Wednsday <br />
-          🌤 70°
+          <img class="futureImage" src="src/images/clear-day.svg" /> 70°
         </div>
 
         <div class="col">
           Thursday <br />
-          ☀ 77°
+          <img class="futureImage" src="src/images/clear-day.svg" /> 77°
         </div>
       </div>
       <br />
