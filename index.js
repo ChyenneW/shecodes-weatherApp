@@ -8,7 +8,7 @@ function getDateTime() {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let day = days[now.getDay()];
@@ -96,7 +96,7 @@ function getCoordinates(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
 
-  let weatherApiWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  let weatherApiWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
   axios.get(weatherApiWithCoords).then(giveCoordsWeather);
 }
 
