@@ -68,9 +68,15 @@ function giveWeatherFromApi(response) {
   let todaysTemp = document.querySelector(".todaysTemp");
   let apiWeatherDescription = response.data.weather[0].description;
   let weatherType = document.querySelector(".weatherType");
+  let humidity = document.querySelector("#humidity");
+  let apiHumidity = response.data.main.humidity;
+  let wind = document.querySelector("#wind");
+  let apiWind = Math.round(response.data.wind.speed);
   if (apiWeather > -99) {
     todaysTemp.innerHTML = `${apiWeather}`;
     weatherType.innerHTML = `${apiWeatherDescription}`;
+    humidity.innerHTML = `${apiHumidity}`;
+    wind.innerHTML = `${apiWind}`;
   }
 }
 
@@ -107,9 +113,15 @@ function giveCoordsWeather(response) {
   let todaysTemp = document.querySelector(".todaysTemp");
   let apiWeatherDescription = response.data.weather[0].description;
   let weatherType = document.querySelector(".weatherType");
+  let humidity = document.querySelector("#humidity");
+  let apiHumidity = response.data.main.humidity;
+  let wind = document.querySelector("#wind");
+  let apiWind = Math.round(response.data.wind.speed);
   if (apiWeather > -99) {
     todaysTemp.innerHTML = `${apiWeather}`;
     weatherType.innerHTML = `${apiWeatherDescription}`;
+    humidity.innerHTML = `${apiHumidity}`;
+    wind.innerHTML = `${apiWind}`;
   }
 }
 
