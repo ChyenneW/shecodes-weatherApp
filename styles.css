@@ -64,8 +64,17 @@
   font-size: 15px;
 }
 
-#temp-scale {
+.unit {
   text-decoration-line: none;
+}
+
+.active {
+  color: black;
+}
+
+.active:hover {
+  cursor: default;
+  color: black;
 }
 
 .weatherType {

@@ -78,6 +78,8 @@ function giveWeatherFromApi(response) {
     humidity.innerHTML = `${apiHumidity}`;
     wind.innerHTML = `${apiWind}`;
   }
+
+  fahrenheitTemp = Math.round(response.data.main.temp);
 }
 
 function getWeatherFromApi() {
@@ -123,7 +125,37 @@ function giveCoordsWeather(response) {
     humidity.innerHTML = `${apiHumidity}`;
     wind.innerHTML = `${apiWind}`;
   }
+
+  fahrenheitTemp = response.data.main.temp;
 }
 
 let apiWeatherFromCoords = document.querySelector(".geoLocateButton");
 apiWeatherFromCoords.addEventListener("click", naviPosition);
+
+// Make Temperature Conversions (32°F − 32) × 5/9
+let fahrenheitTemp = null;
+let fahrenheit = document.querySelector(".fahrenheit");
+let celsius = document.querySelector(".celsius");
+
+function showCelsius(event) {
+  event.preventDefault();
+  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  let inCelsius = document.querySelector(".todaysTemp");
+  inCelsius.innerHTML = Math.round(celsiusTemp);
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+}
+
+let celsiusLink = document.querySelector(".celsius");
+celsiusLink.addEventListener("click", showCelsius);
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let inFahrenheit = document.querySelector(".todaysTemp");
+  inFahrenheit.innerHTML = Math.round(fahrenheitTemp);
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+}
+
+let fahrenheitLink = document.querySelector(".fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheit);
