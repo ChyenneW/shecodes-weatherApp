@@ -72,6 +72,14 @@ function giveWeatherFromApi(response) {
   let apiHumidity = response.data.main.humidity;
   let wind = document.querySelector("#wind");
   let apiWind = Math.round(response.data.wind.speed);
+
+  let apiIconCode = response.data.weather[0].icon;
+  let weatherIcon = document.querySelector(".weatherIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${apiIconCode}@2x.png`
+  );
+
   if (apiWeather > -99) {
     todaysTemp.innerHTML = `${apiWeather}`;
     weatherType.innerHTML = `${apiWeatherDescription}`;
@@ -119,6 +127,14 @@ function giveCoordsWeather(response) {
   let apiHumidity = response.data.main.humidity;
   let wind = document.querySelector("#wind");
   let apiWind = Math.round(response.data.wind.speed);
+
+  let apiIconCode = response.data.weather[0].icon;
+  let weatherIcon = document.querySelector(".weatherIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${apiIconCode}@2x.png`
+  );
+
   if (apiWeather > -99) {
     todaysTemp.innerHTML = `${apiWeather}`;
     weatherType.innerHTML = `${apiWeatherDescription}`;
