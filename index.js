@@ -50,6 +50,8 @@ let apiKey = "624159ad3ba6f7dd7f8492ffa1d7a854";
 function logWeatherApi(response) {
   console.log(response);
 }
+
+// Build Weather Api
 function getWeatherApi() {
   let givenCityName = document.querySelector("#search-bar-input");
   if (givenCityName.value) {
@@ -58,6 +60,7 @@ function getWeatherApi() {
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${givenCityName.value}&units=imperial&appid=${apiKey}`;
   axios.get(weatherApi).then(logWeatherApi);
 }
+
 let api = document.querySelector("#search-city");
 api.addEventListener("submit", getWeatherApi);
 
