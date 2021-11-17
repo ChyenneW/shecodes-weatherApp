@@ -64,6 +64,37 @@ function getWeatherApi() {
 let api = document.querySelector("#search-city");
 api.addEventListener("submit", getWeatherApi);
 
+// Show Weekly Forecast
+function showWeeklyForecast(response) {
+  console.log(response.data.daily);
+  let weeklyForecastElement = document.querySelector(".weekForecast");
+  let days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday"];
+
+  let weeklyForecast = `<div class="row">`;
+
+  days.forEach(function (day) {
+    weeklyForecast =
+      weeklyForecast +
+      `<div class="col">
+        <div class="nextDay">${day}</div>
+          <img class="futureImage" src="src/images/clear-day.svg" />
+          <br/> 
+          <span class="forecastTemperatureMax">77°</span> 
+          <span class="forecastTemeratureMin">30°</span> 
+        </div>`;
+  });
+
+  weeklyForecast = weeklyForecast + `</div>`;
+
+  weeklyForecastElement.innerHTML = weeklyForecast;
+}
+
+// Get Weekly Forecast API
+function getWeeklyForecast(coordinates) {
+  let apiWeekly = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&appid=${apiKey}`;
+  axios.get(apiWeekly).then(showWeeklyForecast);
+}
+
 // Get Weather from API with Given City
 function giveWeatherFromApi(response) {
   console.log(response.data.main.temp);
@@ -91,6 +122,8 @@ function giveWeatherFromApi(response) {
   }
 
   fahrenheitTemp = Math.round(response.data.main.temp);
+
+  getWeeklyForecast(response.data.coord);
 }
 
 function getWeatherFromApi() {
@@ -178,28 +211,3 @@ function showFahrenheit(event) {
 
 let fahrenheitLink = document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
-
-function showWeeklyForecast() {
-  let weeklyForecastElement = document.querySelector(".weekForecast");
-  let days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday"];
-
-  let weeklyForecast = `<div class="row">`;
-
-  days.forEach(function (day) {
-    weeklyForecast =
-      weeklyForecast +
-      `<div class="col">
-        <div class="nextDay">${day}</div>
-          <img class="futureImage" src="src/images/clear-day.svg" />
-          <br/> 
-          <span class="forecastTemperatureMax">77°</span> 
-          <span class="forecastTemeratureMin">30°</span> 
-        </div>`;
-  });
-
-  weeklyForecast = weeklyForecast + `</div>`;
-
-  weeklyForecastElement.innerHTML = weeklyForecast;
-}
-
-showWeeklyForecast();
