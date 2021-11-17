@@ -16,7 +16,16 @@
 }
 
 .searchBar {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.searchBarButton {
+  transition: all 200ms ease-in-out;
+}
+
+.searchBarButton:hover {
+  background-color: white;
+  border: 1px solid white;
 }
 
 .geoLocateButton {
@@ -28,23 +37,33 @@
   text-align: right;
   max-height: 30px;
   margin: 20px;
+  transition: all 200ms ease-in-out;
+}
+
+.geoLocateButton:hover {
+  background-color: white;
+  border: 1px solid white;
 }
 
 .weatherImage {
   position: relative;
   left: 0px;
-  margin: 10px;
+  margin: 0px;
 }
 
 .weatherIcon {
-  width: 150px;
-  display: block;
+  width: 200px;
+  display: inline-block;
 }
 
 .todayForcastDay {
   position: relative;
-  font-size: 50px;
   bottom: 90px;
+  margin-top: 70px;
+}
+
+.searchedCity {
+  font-size: 60px;
 }
 
 .dateTime {
@@ -54,7 +73,7 @@
 
 .todayForcast {
   position: relative;
-  bottom: 80px;
+  bottom: 60px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -62,6 +81,7 @@
 .weatherExtras {
   list-style: none;
   font-size: 15px;
+  font-weight: normal;
 }
 
 .unit {
@@ -80,6 +100,7 @@
 .weatherType {
   padding: 0;
   margin: 0;
+  opacity: 0.5px;
 }
 
 .futureImage {
@@ -90,4 +111,14 @@
   font-size: 15px;
   display: block;
   margin: 0 auto;
+}
+
+.weekForcast {
+  color: black;
+  text-align: center;
+  margin-top: -40px;
+}
+
+.forcastTemeratureMin {
+  opacity: 0.4;
 }

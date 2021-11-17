@@ -30,7 +30,7 @@
               class="searchBar"
               id="search-bar-input"
             />
-            <input type="submit" value="Enter" class="searchBar" />
+            <input type="submit" value="Enter" class="searchBar searchBarButton" />
           </form>
         </div>
         <div class="col-3" id="geoLocateButton">
@@ -65,40 +65,19 @@
             class="fahrenheit unit active"
             >F</a
           >|<span><a href="#" class="celsius unit">C</a></span>
-          <small class="weatherType">Sunny</small>
+          <div class="col-2 weatherType">Sunny</div>
         </p>
       </div>
 
-      <!-- Forcast for next 5 days
-      <div class="row forcast weekForcast">
-        <div class="col">
-          <span class="next">Sunday</span> <br />
-          <img class="futureImage" src="src/images/clear-day.svg" /> 77°
+      <!-- Forcast for next 5 days-->
+      <div class="row weekForcast">
+        <div class="col-2">
+          <div class="nextDay">Sunday</div>
+          <img class="futureImage" src="src/images/clear-day.svg" />
+          <br/> 
+          <span class="forcastTemperatureMax">77°</span> 
+          <span class="forcastTemeratureMin">30°</span> 
         </div>
-
-        <div class="col">
-          <span class="next">Monday</span> <br />
-          <img class="futureImage" src="src/images/clear-day.svg" /> 80°
-        </div>
-
-        <div class="col">
-          <span class="next">Tuesday</span> <br />
-          <img class="futureImage" src="src/images/clear-day.svg" /> 70°
-        </div>
-
-        <div class="col">
-          <span class="next">Wednsday</span> <br />
-          <img class="futureImage" src="src/images/clear-day.svg" /> 70°
-        </div>
-
-        <div class="col">
-          <span class="next">Thursday</span> <br />
-          <img class="futureImage" src="src/images/clear-day.svg" /> 77°
-        </div>
-      </div>
-      -->
-
-      <br />
     </div>
     <br />
 
