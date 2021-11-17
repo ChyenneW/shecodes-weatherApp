@@ -66,21 +66,22 @@ api.addEventListener("submit", getWeatherApi);
 
 // Show Weekly Forecast
 function showWeeklyForecast(response) {
-  console.log(response.data.daily);
+  console.log(response);
+
   let weeklyForecastElement = document.querySelector(".weekForecast");
-  let days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday"];
+  let forecastDays = response.data.daily;
 
   let weeklyForecast = `<div class="row">`;
 
-  days.forEach(function (day) {
+  forecastDays.forEach(function (forecastDay) {
     weeklyForecast =
       weeklyForecast +
       `<div class="col">
-        <div class="nextDay">${day}</div>
-          <img class="futureImage" src="src/images/clear-day.svg" />
+        <div class="nextDay">${forecastDay.dt}</div>
+          <img class="futureImage" src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" />
           <br/> 
-          <span class="forecastTemperatureMax">77°</span> 
-          <span class="forecastTemeratureMin">30°</span> 
+          <span class="forecastTemperatureMax">${forecastDay.temp.max}°</span> 
+          <span class="forecastTemeratureMin">${forecastDay.temp.min}°</span> 
         </div>`;
   });
 
