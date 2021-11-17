@@ -178,3 +178,28 @@ function showFahrenheit(event) {
 
 let fahrenheitLink = document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
+
+function showWeeklyForecast() {
+  let weeklyForecastElement = document.querySelector(".weekForecast");
+  let days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday"];
+
+  let weeklyForecast = `<div class="row">`;
+
+  days.forEach(function (day) {
+    weeklyForecast =
+      weeklyForecast +
+      `<div class="col">
+        <div class="nextDay">${day}</div>
+          <img class="futureImage" src="src/images/clear-day.svg" />
+          <br/> 
+          <span class="forecastTemperatureMax">77°</span> 
+          <span class="forecastTemeratureMin">30°</span> 
+        </div>`;
+  });
+
+  weeklyForecast = weeklyForecast + `</div>`;
+
+  weeklyForecastElement.innerHTML = weeklyForecast;
+}
+
+showWeeklyForecast();

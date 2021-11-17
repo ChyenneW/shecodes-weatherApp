@@ -56,7 +56,7 @@
   display: inline-block;
 }
 
-.todayForcastDay {
+.todayForecastDay {
   position: relative;
   bottom: 90px;
   margin-top: 70px;
@@ -71,7 +71,7 @@
   font-weight: bold;
 }
 
-.todayForcast {
+.todayForecast {
   position: relative;
   bottom: 60px;
   font-size: 20px;
@@ -113,12 +113,12 @@
   margin: 0 auto;
 }
 
-.weekForcast {
+.weekForecast {
   color: black;
   text-align: center;
   margin-top: -40px;
 }
 
-.forcastTemeratureMin {
+.forecastTemeratureMin {
   opacity: 0.4;
 }
