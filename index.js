@@ -64,6 +64,22 @@ function getWeatherApi() {
 let api = document.querySelector("#search-city");
 api.addEventListener("submit", getWeatherApi);
 
+// Get Weekly Forecast Weekdays
+function getForecastWeekday(timestamp) {
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = new Date(timestamp * 1000);
+  let weekday = day.getDay();
+
+  return weekdays[weekday];
+}
 // Show Weekly Forecast
 function showWeeklyForecast(response) {
   console.log(response);
@@ -73,16 +89,24 @@ function showWeeklyForecast(response) {
 
   let weeklyForecast = `<div class="row">`;
 
-  forecastDays.forEach(function (forecastDay) {
-    weeklyForecast =
-      weeklyForecast +
-      `<div class="col">
-        <div class="nextDay">${forecastDay.dt}</div>
-          <img class="futureImage" src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" />
+  forecastDays.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      weeklyForecast =
+        weeklyForecast +
+        `<div class="col">
+        <div class="nextDay">${getForecastWeekday(forecastDay.dt)}</div>
+          <img class="futureImage" src="https://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" />
           <br/> 
-          <span class="forecastTemperatureMax">${forecastDay.temp.max}°</span> 
-          <span class="forecastTemeratureMin">${forecastDay.temp.min}°</span> 
+          <span class="forecastTemperatureMax">${Math.round(
+            forecastDay.temp.max
+          )}°</span> 
+          <span class="forecastTemeratureMin">${Math.round(
+            forecastDay.temp.min
+          )}°</span> 
         </div>`;
+    }
   });
 
   weeklyForecast = weeklyForecast + `</div>`;
