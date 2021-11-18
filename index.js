@@ -54,9 +54,6 @@ function logWeatherApi(response) {
 // Build Weather Api
 function getWeatherApi() {
   let givenCityName = document.querySelector("#search-bar-input");
-  if (givenCityName.value) {
-    console.log(`${givenCityName.value}`);
-  }
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${givenCityName.value}&units=imperial&appid=${apiKey}`;
   axios.get(weatherApi).then(logWeatherApi);
 }
@@ -82,8 +79,6 @@ function getForecastWeekday(timestamp) {
 }
 // Show Weekly Forecast
 function showWeeklyForecast(response) {
-  console.log(response);
-
   let weeklyForecastElement = document.querySelector(".weekForecast");
   let forecastDays = response.data.daily;
 
@@ -122,7 +117,6 @@ function getWeeklyForecast(coordinates) {
 
 // Get Weather from API with Given City
 function giveWeatherFromApi(response) {
-  console.log(response.data.main.temp);
   let apiWeather = Math.round(response.data.main.temp);
   let todaysTemp = document.querySelector(".todaysTemp");
   let apiWeatherDescription = response.data.weather[0].description;
@@ -153,14 +147,22 @@ function giveWeatherFromApi(response) {
 
 function getWeatherFromApi() {
   let givenCityName = document.querySelector("#search-bar-input");
-  if (givenCityName.value) {
-    console.log(`${givenCityName.value}`);
-  }
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${givenCityName.value}&units=imperial&appid=${apiKey}`;
   axios.get(weatherApi).then(giveWeatherFromApi);
 }
 let apiWeather = document.querySelector("#search-city");
 apiWeather.addEventListener("submit", getWeatherFromApi);
+
+// Weather on First Load
+function haveFirst() {
+  let city = document.querySelector(".searchedCity");
+  city.innerHTML = "New York";
+
+  let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=imperial&appid=${apiKey}`;
+  axios.get(weatherApi).then(giveWeatherFromApi);
+}
+
+haveFirst();
 
 // Get Current Location(long/lat) From Navigator
 function naviPosition() {
@@ -168,18 +170,18 @@ function naviPosition() {
 }
 
 function getCoordinates(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
 
   let weatherApiWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
   axios.get(weatherApiWithCoords).then(giveCoordsWeather);
+
+  let apiWeekly = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+  axios.get(apiWeekly).then(showWeeklyForecast);
 }
 
 // Get Weather from Current Location API
 function giveCoordsWeather(response) {
-  console.log(response);
   let apiWeather = Math.round(response.data.main.temp);
   let todaysTemp = document.querySelector(".todaysTemp");
   let apiWeatherDescription = response.data.weather[0].description;
@@ -195,6 +197,10 @@ function giveCoordsWeather(response) {
     "src",
     `https://openweathermap.org/img/wn/${apiIconCode}@2x.png`
   );
+
+  let location = response.data.name;
+  let currentLocation = document.querySelector(".searchedCity");
+  currentLocation.innerHTML = `${location}`;
 
   if (apiWeather > -99) {
     todaysTemp.innerHTML = `${apiWeather}`;
