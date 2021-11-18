@@ -123,12 +123,6 @@
   max-width: 50px;
 }
 
-.signiture {
-  font-size: 15px;
-  display: block;
-  margin: 0 auto;
-}
-
 .weekForecast {
   color: black;
   text-align: center;
@@ -142,4 +136,16 @@
 .forecastTemeratureMin {
   color: #757882;
   opacity: 0.6;
+}
+
+.signiture {
+  font-size: 15px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.githubLink {
+  text-decoration: none;
+  color: #5cc1b3;
 }
