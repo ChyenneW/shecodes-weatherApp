@@ -211,6 +211,8 @@ function giveCoordsWeather(response) {
   }
 
   fahrenheitTemp = response.data.main.temp;
+
+  currentLocationForForecast = response.data.name;
 }
 
 let apiWeatherFromCoords = document.querySelector(".geoLocateButton");
@@ -244,7 +246,7 @@ function showFahrenheit(event) {
 let fahrenheitLink = document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
-// Make Forecast Celsius
+// Make Forecast Celsius(given)
 function forecastToCelsius(response) {
   console.log(response);
   let latitude = response.data[0].lat;
@@ -263,7 +265,7 @@ function forecastToCelsiusLocation() {
 let forecastCelsius = document.querySelector(".celsius");
 forecastCelsius.addEventListener("click", forecastToCelsiusLocation);
 
-// Make Forecast Fahrenheit
+// Make Forecast Fahrenheit(given)
 function forecastToFahrenheit(response) {
   let latitude = response.data[0].lat;
   let longitude = response.data[0].lon;
@@ -280,3 +282,29 @@ function forecastToFahrenheitLocation() {
 
 let forecastFahrenheit = document.querySelector(".fahrenheit");
 forecastFahrenheit.addEventListener("click", forecastToFahrenheitLocation);
+
+//Make Forecast Celsius(current)
+let currentLocationForForecast = null;
+
+function currentForecastCelsiusLocation() {
+  let currentForecastCelsiusApiLoc = `https://api.openweathermap.org/geo/1.0/direct?q=${currentLocationForForecast}&limit=5&appid=${apiKey}`;
+  axios.get(currentForecastCelsiusApiLoc).then(forecastToCelsius);
+}
+
+let currentForecastCelsius = document.querySelector(".celsius");
+currentForecastCelsius.addEventListener(
+  "click",
+  currentForecastCelsiusLocation
+);
+
+// Make Forecast Fahrenheit(current)
+function currentForecastFahrenheitLocation() {
+  let currentForecastFahrenheitApiLoc = `https://api.openweathermap.org/geo/1.0/direct?q=${currentLocationForForecast}&limit=5&appid=${apiKey}`;
+  axios.get(currentForecastFahrenheitApiLoc).then(forecastToFahrenheit);
+}
+
+let currentForecastFahrenheit = document.querySelector(".fahrenheit");
+currentForecastFahrenheit.addEventListener(
+  "click",
+  currentForecastFahrenheitLocation
+);
