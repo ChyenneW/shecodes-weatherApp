@@ -77,6 +77,7 @@ function getForecastWeekday(timestamp) {
 
   return weekdays[weekday];
 }
+
 // Show Weekly Forecast
 function showWeeklyForecast(response) {
   let weeklyForecastElement = document.querySelector(".weekForecast");
@@ -242,3 +243,40 @@ function showFahrenheit(event) {
 
 let fahrenheitLink = document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
+
+// Make Forecast Celsius
+function forecastToCelsius(response) {
+  console.log(response);
+  let latitude = response.data[0].lat;
+  let longitude = response.data[0].lon;
+
+  let forecastToCelsiusApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  axios.get(forecastToCelsiusApi).then(showWeeklyForecast);
+}
+
+function forecastToCelsiusLocation() {
+  let forecastCity = document.querySelector("#search-bar-input");
+  let forecastCelsiusApiLoc = `https://api.openweathermap.org/geo/1.0/direct?q=${forecastCity.value}&limit=5&appid=${apiKey}`;
+  axios.get(forecastCelsiusApiLoc).then(forecastToCelsius);
+}
+
+let forecastCelsius = document.querySelector(".celsius");
+forecastCelsius.addEventListener("click", forecastToCelsiusLocation);
+
+// Make Forecast Fahrenheit
+function forecastToFahrenheit(response) {
+  let latitude = response.data[0].lat;
+  let longitude = response.data[0].lon;
+
+  let forecastToFahrenheitApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+  axios.get(forecastToFahrenheitApi).then(showWeeklyForecast);
+}
+
+function forecastToFahrenheitLocation() {
+  let forecastCity = document.querySelector("#search-bar-input");
+  let forecastFahrenheitApiLoc = `https://api.openweathermap.org/geo/1.0/direct?q=${forecastCity.value}&limit=5&appid=${apiKey}`;
+  axios.get(forecastFahrenheitApiLoc).then(forecastToFahrenheit);
+}
+
+let forecastFahrenheit = document.querySelector(".fahrenheit");
+forecastFahrenheit.addEventListener("click", forecastToFahrenheitLocation);

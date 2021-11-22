@@ -34,8 +34,8 @@
 }
 
 .searchBarButton:hover {
-  background-color: white;
-  border: 1px solid white;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .geoLocateButton {
@@ -53,8 +53,8 @@
 }
 
 .geoLocateButton:hover {
-  background-color: white;
-  border: 1px solid white;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .weatherImage {
@@ -104,12 +104,12 @@
 }
 
 .active {
-  color: black;
+  color: #000000;
 }
 
 .active:hover {
   cursor: default;
-  color: black;
+  color: #000000;
 }
 
 .weatherType {
@@ -124,7 +124,7 @@
 }
 
 .weekForecast {
-  color: black;
+  color: #000000;
   text-align: center;
   margin-top: -40px;
 }
